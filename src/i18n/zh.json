@@ -1,0 +1,37 @@
+{
+  "common": {
+    "title": "时空笔记",
+    "language": "语言"
+  },
+  "nav": {
+    "signout": "退出登录",
+    "dashboard": "控制台",
+    "marketUser": "运营人员管理",
+    "note": "笔记管理",
+    "noteList": "笔记列表",
+    "users": "笔记用户",
+    "themePageWeb": "网页端主题",
+    "themePageApp": "手机端主题"
+  },
+  "login": {
+    "greeting1": "欢迎登录时空笔记",
+    "greeting2": "写一封信给未来的自己吧",
+    "btSignIn": "登录",
+    "btRegister": "注册",
+    "loginNameHolder": "请输入登录名",
+    "passwordHolder": "请输入密码",
+    "tipNoLoginName": "请输入登录名",
+    "tipNoPassword": "请输入登录密码",
+    "login": "登录",
+    "register": "注册",
+    "tipLoginSuccess": "注册成功",
+    "unSign": "未登录"
+  },
+  "theme": {
+    "tipSaveSuccess": "保存主题成功"
+  },
+  "syserr": {
+    "10001": "系统错误",
+    "10027": "没有查询到管理员账号"
+  }
+}

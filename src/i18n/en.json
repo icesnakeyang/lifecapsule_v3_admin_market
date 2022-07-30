@@ -1,0 +1,37 @@
+{
+  "common": {
+    "title": "LifeCapsule",
+    "language": "Language"
+  },
+  "nav": {
+    "signout": "Sign out",
+    "dashboard": "Dashboard",
+    "marketUser": "Market users",
+    "note": "Note",
+    "noteList": "Note list",
+    "users": "Users",
+    "themePageWeb": "Web Theme",
+    "themePageApp": "App Theme"
+  },
+  "login": {
+    "greeting1": "Welcome Lifecapsule",
+    "greeting2": "Write letter send to future",
+    "btSignIn": "Sign in",
+    "btRegister": "Register",
+    "loginNameHolder": "Please input login name",
+    "passwordHolder": "Please input password",
+    "tipNoLoginName": "Please input login name",
+    "tipNoPassword": "Please input login password",
+    "login": "Login",
+    "register": "Register",
+    "tipLoginSuccess": "Login success",
+    "unSign": "UnSign"
+  },
+  "theme": {
+    "tipSaveSuccess": "Save sucess"
+  },
+  "syserr": {
+    "10001": "System or network error",
+    "10027": "Admin account error"
+  }
+}
