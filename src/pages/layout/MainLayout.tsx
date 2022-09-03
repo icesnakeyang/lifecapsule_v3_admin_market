@@ -18,7 +18,6 @@ const MainLayout: React.FC = () => {
   const token = useSelector((state: any) => state.loginSlice.token);
 
   useEffect(() => {
-    console.log(token);
     if (!token) {
       navigate("/guest/login");
     }
@@ -26,7 +25,7 @@ const MainLayout: React.FC = () => {
   }, [token]);
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100%", minHeight: "100vh" }}>
       <Header
         style={{
           position: "fixed",

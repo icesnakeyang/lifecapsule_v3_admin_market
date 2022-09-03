@@ -28,7 +28,10 @@
     "unSign": "未登录"
   },
   "theme": {
-    "tipSaveSuccess": "保存主题成功"
+    "tipSaveSuccess": "保存主题成功",
+    "isDefault": "设置为默认主题",
+    "ACTIVE": "普通",
+    "DEFAULT": "默认"
   },
   "syserr": {
     "10001": "系统错误",

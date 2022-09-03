@@ -5,15 +5,15 @@ import GuestLayout from "../pages/layout/GuestLayout";
 import MainLayout from "../pages/layout/MainLayout";
 import Login from "../pages/login/Login";
 import NoteList from "../pages/note/NoteList";
-import ThemePageWeb from "../pages/settings/theme/ThemePageWeb";
-import ThemeWebEdit from "../pages/settings/theme/ThemeWebEdit";
+import ThemePageWeb from "../pages/settings/theme/webTheme/ThemePageWeb";
+import ThemeWebEdit from "../pages/settings/theme/webTheme/ThemeWebEdit";
 import UserList from "../pages/users/Users/UserList";
 import WelcomePage from "../pages/WelcomPage";
+import AppThemePage from "../pages/settings/theme/appTheme/AppThemePage";
+import AppThemeEdit from "../pages/settings/theme/appTheme/AppThemeEditi";
 
 const ProtectRouter = ({ children }: any) => {
   const token = useSelector((state: any) => state.loginSlice.token);
-  console.log(token);
-  console.log(children);
   return token ? children : <Navigate to="/guest/login" />;
 };
 const Routers = () => {
@@ -65,6 +65,22 @@ const Routers = () => {
           element={
             <ProtectRouter>
               <ThemeWebEdit />
+            </ProtectRouter>
+          }
+        />
+          <Route
+          path="/main/AppThemePage"
+          element={
+            <ProtectRouter>
+              <AppThemePage />
+            </ProtectRouter>
+          }
+        />
+          <Route
+          path="/main/AppThemeEdit"
+          element={
+            <ProtectRouter>
+              <AppThemeEdit />
             </ProtectRouter>
           }
         />

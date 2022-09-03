@@ -17,3 +17,21 @@ export const post = (api: String, params: any) => {
       });
   });
 };
+
+export const get = (api: String) => {
+  const token = localStorage.getItem("lifecapsule3_admin_token") || "";
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${api}`, {
+        headers: {
+          token,
+        },
+      })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

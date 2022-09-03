@@ -28,7 +28,10 @@
     "unSign": "UnSign"
   },
   "theme": {
-    "tipSaveSuccess": "Save sucess"
+    "tipSaveSuccess": "Save sucess",
+    "isDefault": "Set to default theme",
+    "ACTIVE": "Normal",
+    "DEFAULT": "Default"
   },
   "syserr": {
     "10001": "System or network error",

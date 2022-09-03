@@ -20,7 +20,6 @@ const UserList = () => {
       pageSize,
     };
     apiListUsers(params).then((res: any) => {
-      console.log(res);
       if (res.code === 0) {
         setUserList(res.data.userList);
         setTotalUser(res.data.totalUser);
@@ -29,7 +28,6 @@ const UserList = () => {
   };
 
   const onChangePage = (e: any) => {
-    console.log(e);
     setPageIndex(e);
   };
 

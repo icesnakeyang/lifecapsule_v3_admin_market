@@ -2,8 +2,8 @@ import { Button, Card } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { apiListWebTheme } from "../../../api/Api";
-import { saveThemeListWeb } from "../../../store/themeSlice";
+import { apiListWebTheme } from "../../../../api/Api";
+import { saveThemeListWeb } from "../../../../store/themeSlice";
 import ThemeRow from "./ThemeRow";
 
 const ThemePageWeb = () => {
@@ -30,7 +30,6 @@ const ThemePageWeb = () => {
       pageSize: themeWebPageSize,
     };
     apiListWebTheme(params).then((res: any) => {
-      console.log(res);
       if (res.code === 0) {
         dispatch(saveThemeListWeb(res.data.themeList));
       }

@@ -31,7 +31,6 @@ const Login = () => {
             res.data.admin.token
           );
           message.success(t("login.tipLoginSuccess"));
-          console.log("login success");
           navigate("/main/dashboard");
         } else {
           message.error(t("syserr." + res.code));

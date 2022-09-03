@@ -23,6 +23,9 @@ const MainSider = () => {
     if (e.key === "menuThemePageWeb") {
       navigate("/main/ThemePageWeb");
     }
+    if (e.key === "menuThemePageApp") {
+      navigate("/main/AppThemePage");
+    }
   };
 
   return (
@@ -61,6 +64,11 @@ const MainSider = () => {
           key: "menuThemePageWeb",
           icon: <PartitionOutlined />,
           label: t("nav.themePageWeb"),
+        },
+          {
+          key: "menuThemePageApp",
+          icon: <PartitionOutlined />,
+          label: t("nav.themePageApp"),
         },
       ]}
       onClick={(e) => {

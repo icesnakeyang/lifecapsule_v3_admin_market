@@ -14,13 +14,10 @@ const NoteList = () => {
   const notePageSize = useSelector(
     (state: any) => state.noteSlice.notePageSize
   );
-  console.log(notePageSize);
   const noteList = useSelector((state: any) => state.noteSlice.noteList || []);
   const dispatch = useDispatch();
 
-  console.log(noteList);
   useEffect(() => {
-    console.log("load data");
     loadAllData();
   }, [notePageIndex]);
 
@@ -30,13 +27,11 @@ const NoteList = () => {
       pageSize: notePageSize,
     };
     apiAdminNoteList(params).then((res: any) => {
-      console.log(res);
       dispatch(saveNoteList(res.data.noteList));
       setTotalNote(res.data.totalNote);
     });
   };
   const onChangePage = (e: any) => {
-    console.log(e);
     dispatch(saveNotePageIndex(e));
   };
 

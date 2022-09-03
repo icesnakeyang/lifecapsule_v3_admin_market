@@ -6,6 +6,7 @@ import counterSlice from "./counterSlice";
 import loginSlice from "./loginSlice";
 import noteSlice from "./noteSlice";
 import themeSlice from "./themeSlice";
+import userSlice from "./userSlice";
 
 const persistConfig = {
   key: "root",
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   loginSlice,
   noteSlice,
   themeSlice,
+  userSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
