@@ -28,9 +28,11 @@ export const get = (api: String) => {
         },
       })
       .then((res) => {
+        console.log(res)
         resolve(res.data);
       })
       .catch((error) => {
+        console.log(error)
         reject(error);
       });
   });

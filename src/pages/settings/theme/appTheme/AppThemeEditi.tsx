@@ -2,8 +2,16 @@ import {Button, Card, Col, Form, Input, message, Row, Switch, Tag} from "antd";
 import {
     saveCurrentThemeBackground,
     saveCurrentThemeBlockDark,
-    saveCurrentThemeBlockLight,
-    saveCurrentThemeColorDanger,
+    saveCurrentThemeBlockLight, saveCurrentThemeColor1,
+    saveCurrentThemeColor2,
+    saveCurrentThemeColor3,
+    saveCurrentThemeColor4,
+    saveCurrentThemeColorDanger, saveCurrentThemeColorDanger2, saveCurrentThemeColorDark,
+    saveCurrentThemeColorDark2,
+    saveCurrentThemeColorLight,
+    saveCurrentThemeColorLight2,
+    saveCurrentThemeColorMedium,
+    saveCurrentThemeColorMedium2,
     saveCurrentThemeTextDark,
     saveCurrentThemeTextHolder,
     saveCurrentThemeTextLight, saveDefaultTheme, saveThemeStatus
@@ -49,6 +57,39 @@ const AppThemeEdit = () => {
     const currentThemeColorDanger = useSelector(
         (state: any) => state.themeSlice.currentThemeColorDanger
     );
+    const currentThemeColorDanger2 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorDanger2
+    );
+    const currentThemeColorDark = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorDark
+    );
+    const currentThemeColorDark2 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorDark2
+    );
+    const currentThemeColorMedium = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorMedium
+    );
+    const currentThemeColorMedium2 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorMedium2
+    );
+    const currentThemeColorLight = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorLight
+    );
+    const currentThemeColorLight2 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColorLight2
+    );
+    const currentThemeColor1 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColor1
+    );
+    const currentThemeColor2 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColor2
+    );
+    const currentThemeColor3 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColor3
+    );
+    const currentThemeColor4 = useSelector(
+        (state: any) => state.themeSlice.currentThemeColor4
+    );
     const dispatch = useDispatch()
     const {t} = useTranslation()
     const navigate = useNavigate();
@@ -59,7 +100,7 @@ const AppThemeEdit = () => {
         loadAllData()
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(defaultTheme)
 
     }, [defaultTheme])
@@ -82,7 +123,7 @@ const AppThemeEdit = () => {
                 if (res.data.theme.status === 'DEFAULT') {
                     dispatch(saveDefaultTheme(true))
                     console.log('set to default')
-                }else{
+                } else {
                     dispatch(saveDefaultTheme(false))
                     console.log('set to active')
                 }
@@ -100,10 +141,22 @@ const AppThemeEdit = () => {
             textLight: currentThemeTextLight,
             textHolder: currentThemeTextHolder,
             colorDanger: currentThemeColorDanger,
+            colorDanger2: currentThemeColorDanger2,
+            colorDark: currentThemeColorDark,
+            colorDark2: currentThemeColorDark2,
+            colorMedium: currentThemeColorMedium,
+            colorMedium2: currentThemeColorMedium2,
+            colorLight: currentThemeColorLight,
+            colorLight2: currentThemeColorLight2,
+            color1: currentThemeColor1,
+            color2: currentThemeColor2,
+            color3: currentThemeColor3,
+            color4: currentThemeColor4,
             themeName,
             status: themeStatus
         }
 
+        console.log(params)
         if (themeId) {
             apiUpdateAppTheme(params).then((res: any) => {
                 if (res.code === 0) {
@@ -292,6 +345,249 @@ const AppThemeEdit = () => {
                         </Col>
                     </Row>
                 </Form.Item>
+                <Form.Item label="colorDanger2">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorDanger2}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorDanger2(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorDanger2,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorDark">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorDark}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorDark(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorDark,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorMedium">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorMedium}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorMedium(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorMedium,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorLight">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorLight}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorLight(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorLight,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorDark2">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorDark2}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorDark2(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorDark2,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorMedium2">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorMedium2}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorMedium2(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorMedium2,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="colorLight2">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColorLight2}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColorLight2(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColorLight2,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="color1">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColor1}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColor1(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColor1,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="color2">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColor2}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColor2(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColor2,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="color3">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColor3}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColor3(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColor3,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+                <Form.Item label="color4">
+                    <Row>
+                        <Col style={{width: "100px"}}>
+                            <Input
+                                value={currentThemeColor4}
+                                onChange={(e) => {
+                                    dispatch(saveCurrentThemeColor4(e.target.value));
+                                }}
+                            />
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "50px",
+                                    height: "100%",
+                                    background: currentThemeColor4,
+                                    marginLeft: 10,
+                                }}
+                            ></div>
+                        </Col>
+                    </Row>
+                </Form.Item>
+
                 <Form.Item label={t('theme.isDefault')}>
                     <Row>
                         <Col>sdfss:{themeStatus}</Col>
@@ -340,7 +636,14 @@ const AppThemeEdit = () => {
                     <div style={{color: currentThemeTextLight}}>textLight</div>
                     <div style={{color: currentThemeTextDark}}>textDark</div>
                     <div style={{color: currentThemeTextHolder}}>textHolder</div>
-                    <div style={{color: currentThemeColorDanger}}>textHolder</div>
+                    <div style={{color: currentThemeColorDanger}}>colorDanger</div>
+                    <div style={{color: currentThemeColorDanger2}}>colorDanger2</div>
+                    <div style={{color: currentThemeColorDark}}>colorDark</div>
+                    <div style={{color: currentThemeColorDark2}}>colorDark2</div>
+                    <div style={{color: currentThemeColorMedium}}>colorMedium</div>
+                    <div style={{color: currentThemeColorMedium2}}>colorMedium2</div>
+                    <div style={{color: currentThemeColorLight}}>colorLight</div>
+                    <div style={{color: currentThemeColorLight2}}>colorLight2</div>
                 </div>
                 <div
                     style={{
@@ -354,7 +657,14 @@ const AppThemeEdit = () => {
                     <div style={{color: currentThemeTextLight}}>textLight</div>
                     <div style={{color: currentThemeTextDark}}>textDark</div>
                     <div style={{color: currentThemeTextHolder}}>textHolder</div>
-                    <div style={{color: currentThemeColorDanger}}>textHolder</div>
+                    <div style={{color: currentThemeColorDanger}}>colorDanger</div>
+                    <div style={{color: currentThemeColorDanger2}}>colorDanger2</div>
+                    <div style={{color: currentThemeColorDark}}>colorDark</div>
+                    <div style={{color: currentThemeColorDark2}}>colorDark2</div>
+                    <div style={{color: currentThemeColorMedium}}>colorMedium</div>
+                    <div style={{color: currentThemeColorMedium2}}>colorMedium2</div>
+                    <div style={{color: currentThemeColorLight}}>colorLight</div>
+                    <div style={{color: currentThemeColorLight2}}>colorLight2</div>
                 </div>
                 background
             </div>

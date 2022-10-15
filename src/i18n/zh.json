@@ -11,7 +11,8 @@
     "noteList": "笔记列表",
     "users": "笔记用户",
     "themePageWeb": "网页端主题",
-    "themePageApp": "手机端主题"
+    "themePageApp": "手机端主题",
+    "topicList": "话题"
   },
   "login": {
     "greeting1": "欢迎登录时空笔记",

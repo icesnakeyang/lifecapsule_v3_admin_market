@@ -67,3 +67,15 @@ export const apiGetAppTheme = (params: any) => {
 export const apiLoadUserLoginStatistic = (params: any) => {
     return post(`${host}/admin/users/loadUserLoginStatistic`, params);
 };
+
+export const apiListTop10Notes = () => {
+    return get(`${host}/admin/users/listTop10Notes`);
+};
+
+export const apiRemoveTopic = () => {
+    return get(`${host}/admin/topic/removeTopic`);
+};
+
+export const apiListTopic = (params: any) => {
+    return post(`${host}/admin/topic/listTopic`, params);
+};

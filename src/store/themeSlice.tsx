@@ -15,6 +15,16 @@ export const themeSlice = createSlice({
             currentThemeTextHolder: "",
             currentThemeColorDanger: "",
             currentThemeColorDanger2: "",
+            currentThemeColorDark: "",
+            currentThemeColorDark2: "",
+            currentThemeColorMedium: "",
+            currentThemeColorMedium2: "",
+            currentThemeColorLight: "",
+            currentThemeColorLight2: "",
+            currentThemeColor1: "",
+            currentThemeColor2: "",
+            currentThemeColor3: "",
+            currentThemeColor4: "",
             themeStatus: '',
             defaultTheme: false
         },
@@ -52,6 +62,36 @@ export const themeSlice = createSlice({
             saveCurrentThemeColorDanger2: (state: any, action: any) => {
                 state.currentThemeColorDanger2 = action.payload;
             },
+            saveCurrentThemeColorDark: (state: any, action: any) => {
+                state.currentThemeColorDark = action.payload;
+            },
+            saveCurrentThemeColorDark2: (state: any, action: any) => {
+                state.currentThemeColorDark2 = action.payload;
+            },
+            saveCurrentThemeColorMedium: (state: any, action: any) => {
+                state.currentThemeColorMedium = action.payload;
+            },
+            saveCurrentThemeColorMedium2: (state: any, action: any) => {
+                state.currentThemeColorMedium2 = action.payload;
+            },
+            saveCurrentThemeColorLight: (state: any, action: any) => {
+                state.currentThemeColorLight = action.payload;
+            },
+            saveCurrentThemeColorLight2: (state: any, action: any) => {
+                state.currentThemeColorLight2 = action.payload;
+            },
+            saveCurrentThemeColor1: (state: any, action: any) => {
+                state.currentThemeColor1 = action.payload;
+            },
+            saveCurrentThemeColor2: (state: any, action: any) => {
+                state.currentThemeColor2 = action.payload;
+            },
+            saveCurrentThemeColor3: (state: any, action: any) => {
+                state.currentThemeColor3 = action.payload;
+            },
+            saveCurrentThemeColor4: (state: any, action: any) => {
+                state.currentThemeColor4 = action.payload;
+            },
             saveThemeListApp: (state: any, action: any) => {
                 state.themeListApp = action.payload
             },
@@ -77,6 +117,16 @@ export const {
     saveCurrentThemeTextHolder,
     saveCurrentThemeColorDanger,
     saveCurrentThemeColorDanger2,
+    saveCurrentThemeColorDark,
+    saveCurrentThemeColorDark2,
+    saveCurrentThemeColorMedium,
+    saveCurrentThemeColorMedium2,
+    saveCurrentThemeColorLight,
+    saveCurrentThemeColorLight2,
+    saveCurrentThemeColor1,
+    saveCurrentThemeColor2,
+    saveCurrentThemeColor3,
+    saveCurrentThemeColor4,
     saveThemeListApp,
     saveThemeStatus,
     saveDefaultTheme

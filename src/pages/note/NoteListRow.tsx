@@ -7,6 +7,7 @@ const NoteListRow = (data: any) => {
     <div style={{ background: "#ccc", marginTop: 10, padding: 10 }}>
       <div style={{ fontSize: 18 }}>{item.title}</div>
       <div>{moment(item.createTime).format("LL")}</div>
+      <div>{item.nickname}</div>
     </div>
   );
 };

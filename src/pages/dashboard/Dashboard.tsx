@@ -1,17 +1,20 @@
 import {
     Breadcrumb,
-    Button,
+    Row,
     Card,
     Divider,
     Input,
     Pagination,
     Spin,
-    DatePicker
+    DatePicker, Col
 } from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {decrement, increment} from "../../store/counterSlice";
-import {useLocation} from "react-router-dom";
-import {apiListUserLoginLog, apiLoadUserLoginStatistic, apiLoadUserStatistic} from "../../api/Api";
+import {
+    apiListTop10Notes, apiListTopic,
+    apiListUserLoginLog,
+    apiLoadUserLoginStatistic,
+    apiLoadUserStatistic,
+} from "../../api/Api";
 import {useEffect, useState} from "react";
 import {
     saveUserLoginLogList,
@@ -22,14 +25,14 @@ import {
 } from "../../store/userSlice";
 import UserLoginLogRow from "./UserLoginLogRow";
 import UserLoginStatisticRow from './UserLoginStatisticRow'
+import NoteRow from './NoteRow'
+import TopicRow from "./TopicRow";
 
 const {Search} = Input;
 const {RangePicker} = DatePicker;
 
 const Dashboard = () => {
-    const count = useSelector((state: any) => state.counterSlice.value);
     const dispatch = useDispatch();
-    const location = useLocation();
     const userLoginLogPageIndex = useSelector(
         (state: any) => state.userSlice.userLoginLogPageIndex
     );
@@ -50,10 +53,14 @@ const Dashboard = () => {
     const [startTime, setStartTime] = useState(null)
     const [endTime, setEndTime] = useState(null)
     const userLoginStatisticList = useSelector((state: any) => state.userSlice.userLoginStatisticList || [])
+    const [noteList, setNoteList] = useState([])
+    const [topicList, setTopicList] = useState([])
 
     useEffect(() => {
         dispatch(saveUserLoginLogPageIndex(1));
         loadUserStatistic();
+        loadTop10Notes()
+        loadTop10Topis()
     }, []);
 
     useEffect(() => {
@@ -64,7 +71,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         loadUserStatistic();
-
     }, [startTime, endTime])
 
     const loadUserLoginLog = () => {
@@ -110,6 +116,27 @@ const Dashboard = () => {
         loadUserLoginLog();
     };
 
+    const loadTop10Notes = () => {
+        apiListTop10Notes().then((res: any) => {
+            console.log(res)
+            if (res.code === 0) {
+                setNoteList(res.data.noteList)
+            }
+        })
+    }
+
+    const loadTop10Topis = () => {
+        let params = {
+            pageIndex: 1,
+            pageSize: 10
+        }
+        apiListTopic(params).then((res: any) => {
+            if (res.code === 0) {
+                setTopicList(res.data.topicList)
+            }
+        })
+    }
+
     return (
         <div>
             {loading ? (
@@ -132,6 +159,7 @@ const Dashboard = () => {
                         </Breadcrumb.Item>
                     </Breadcrumb>
 
+                    {/*header bar*/}
                     <Card>
                         {/* <Input placeholder="Search user" onSearch={onSearch} /> */}
                         <Search
@@ -145,6 +173,7 @@ const Dashboard = () => {
                         />
                     </Card>
 
+                    {/*统计板*/}
                     <div style={{display: "flex"}}>
                         <Card style={{margin: 10}}>
                             <div>用户登录次数</div>
@@ -169,14 +198,43 @@ const Dashboard = () => {
                             setStartTime(e[0]);
                             setEndTime(e[1])
                         }}/>
-                        {userLoginStatisticList.length > 0 ?
+
+                        {/*用户登录次数统计*/}
+                        <Row style={{marginTop: 10}}>
+                            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+                                <Row style={{}}>
+                                    <Col xs={12} sm={8} md={8} lg={8} xl={6} xxl={6}>登录次数</Col>
+                                    <Col xs={12} sm={8} md={8} lg={8} xl={6} xxl={6}>用户姓名</Col>
+                                    <Col xs={12} sm={8} md={8} lg={8} xl={6} xxl={6}>Email</Col>
+                                </Row>
+                                {userLoginStatisticList.length > 0 ?
+                                    <div style={{}}>
+                                        {
+                                            userLoginStatisticList.map((item: any, index: any) => (
+                                                <UserLoginStatisticRow item={item} key={index}/>
+                                            ))
+                                        }
+                                    </div> : null}
+                            </Col>
+                        </Row>
+
+                        {/*笔记*/}
+                        <Row>
+                            <Col span={12}>标题</Col>
+                            <Col span={4}>创建时间</Col>
+                            <Col span={4}>用户昵称</Col>
+                            <Col span={4}>Email</Col>
+                        </Row>
+                        {noteList.length > 0 ?
                             <div>
                                 {
-                                    userLoginStatisticList.map((item: any, index: any) => (
-                                        <UserLoginStatisticRow item={item} key={index}/>
+                                    noteList.map((item, index) => (
+                                        <NoteRow item={item} key={index}/>
                                     ))
                                 }
                             </div> : null}
+
+                        {/*用户登录记录*/}
                         <div>
                             {userLoginLogList ? (
                                 <div
@@ -186,6 +244,65 @@ const Dashboard = () => {
                                         padding: 10,
                                     }}
                                 >
+                                    <Row>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>用户姓名</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>登录时间</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>注册时间</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>登录设备</Col>
+                                    </Row>
+                                    {userLoginLogList.map((item: any, index: any) => (
+                                        <UserLoginLogRow item={item} key={index}/>
+                                    ))}
+                                    <Pagination
+                                        total={userLoginLogTotal}
+                                        showSizeChanger
+                                        showQuickJumper
+                                        showTotal={() => `Total ${userLoginLogTotal} logs`}
+                                        onChange={(e) => {
+                                            dispatch(saveUserLoginLogPageIndex(e));
+                                        }}
+                                        onShowSizeChange={(page, size) => {
+                                            dispatch(saveUserLoginLogPageIndex(page));
+                                            dispatch(saveUserLoginLogPageSize(size));
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <div>没有用户使用</div>
+                            )}
+                        </div>
+
+                        {/*话题*/}
+                        <Row>
+                            <Col span={12}>标题</Col>
+                            <Col span={4}>创建时间</Col>
+                            <Col span={4}>作者</Col>
+                        </Row>
+                        {topicList.length > 0 ?
+                            <div>
+                                {
+                                    topicList.map((item, index) => (
+                                        <TopicRow item={item} key={index}/>
+                                    ))
+                                }
+                            </div> : null}
+
+                        {/*用户登录记录*/}
+                        <div>
+                            {userLoginLogList ? (
+                                <div
+                                    style={{
+                                        border: "2px solid #blue",
+                                        margin: 10,
+                                        padding: 10,
+                                    }}
+                                >
+                                    <Row>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>用户姓名</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>登录时间</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>注册时间</Col>
+                                        <Col xs={24} sm={8} md={8} lg={6} xl={6} xxl={6}>登录设备</Col>
+                                    </Row>
                                     {userLoginLogList.map((item: any, index: any) => (
                                         <UserLoginLogRow item={item} key={index}/>
                                     ))}

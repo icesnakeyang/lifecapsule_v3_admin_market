@@ -26,6 +26,9 @@ const MainSider = () => {
     if (e.key === "menuThemePageApp") {
       navigate("/main/AppThemePage");
     }
+    if (e.key === "menuTopicList") {
+      navigate("/main/TopicList");
+    }
   };
 
   return (
@@ -69,6 +72,11 @@ const MainSider = () => {
           key: "menuThemePageApp",
           icon: <PartitionOutlined />,
           label: t("nav.themePageApp"),
+        },
+          {
+          key: "menuTopicList",
+          icon: <PartitionOutlined />,
+          label: t("nav.topicList"),
         },
       ]}
       onClick={(e) => {
