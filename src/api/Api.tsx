@@ -79,3 +79,19 @@ export const apiRemoveTopic = () => {
 export const apiListTopic = (params: any) => {
     return post(`${host}/admin/topic/listTopic`, params);
 };
+
+export const apiListMotto = (params: any) => {
+    return post(`${host}/admin/motto/listMotto`, params);
+};
+
+export const apiGetMotto = (params: any) => {
+    return post(`${host}/admin/motto/getMotto`, params);
+};
+
+export const apiSetMottoStop = (params: any) => {
+    return post(`${host}/admin/motto/setMottoStop`, params);
+};
+
+export const apiSetMottoActive = (params: any) => {
+    return post(`${host}/admin/motto/setMottoActive`, params);
+};

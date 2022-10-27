@@ -12,7 +12,8 @@
     "users": "笔记用户",
     "themePageWeb": "网页端主题",
     "themePageApp": "手机端主题",
-    "topicList": "话题"
+    "topicList": "话题",
+    "mottoList": "鸡汤"
   },
   "login": {
     "greeting1": "欢迎登录时空笔记",
@@ -33,6 +34,10 @@
     "isDefault": "设置为默认主题",
     "ACTIVE": "普通",
     "DEFAULT": "默认"
+  },
+  "motto": {
+    "tipSetMottoStopSuccess": "已暂停该语录",
+    "tipSetMottoActiveSuccess": "激活成功"
   },
   "syserr": {
     "10001": "系统错误",

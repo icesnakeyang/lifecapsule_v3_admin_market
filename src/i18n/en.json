@@ -12,7 +12,8 @@
     "users": "Users",
     "themePageWeb": "Web Theme",
     "themePageApp": "App Theme",
-    "topicList": "Topic list"
+    "topicList": "Topic list",
+    "mottoList": "Motto"
   },
   "login": {
     "greeting1": "Welcome Lifecapsule",
@@ -33,6 +34,10 @@
     "isDefault": "Set to default theme",
     "ACTIVE": "Normal",
     "DEFAULT": "Default"
+  },
+  "motto": {
+    "tipSetMottoStopSuccess": "This motto has been stopped already",
+    "tipSetMottoActiveSuccess": "This motto has been active already"
   },
   "syserr": {
     "10001": "System or network error",
