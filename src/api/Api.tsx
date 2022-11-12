@@ -1,9 +1,9 @@
 import {post, get} from "./ApiBase";
 
 // const host = "http://192.168.1.3:8003/lifecapsule3_api";
-const host = "http://localhost:8003/lifecapsule3_api";
+// const host = "http://localhost:8003/lifecapsule3_api";
 // const host = "http://192.168.43.97:8003/lifecapsule3_api";
-// const host = "https://gogorpg.com/lifecapsule3_api";
+const host = "https://gogorpg.com/lifecapsule3_api";
 
 export const apiAdminLogin = (params: any) => {
     return post(`${host}/admin/login/admin_login`, params);

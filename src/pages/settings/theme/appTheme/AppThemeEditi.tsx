@@ -111,6 +111,7 @@ const AppThemeEdit = () => {
         };
         apiGetAppTheme(params).then((res: any) => {
             if (res.code === 0) {
+                console.log(res)
                 dispatch(saveCurrentThemeBackground(res.data.theme.background));
                 dispatch(saveCurrentThemeBlockDark(res.data.theme.blockDark));
                 dispatch(saveCurrentThemeBlockLight(res.data.theme.blockLight));
@@ -118,6 +119,17 @@ const AppThemeEdit = () => {
                 dispatch(saveCurrentThemeTextDark(res.data.theme.textDark));
                 dispatch(saveCurrentThemeTextHolder(res.data.theme.textHolder));
                 dispatch(saveCurrentThemeColorDanger(res.data.theme.colorDanger));
+                dispatch(saveCurrentThemeColorDanger2(res.data.theme.colorDanger2));
+                dispatch(saveCurrentThemeColorDark(res.data.theme.colorDark));
+                dispatch(saveCurrentThemeColorDark2(res.data.theme.colorDark2));
+                dispatch(saveCurrentThemeColorMedium(res.data.theme.colorMedium));
+                dispatch(saveCurrentThemeColorMedium2(res.data.theme.colorMedium2));
+                dispatch(saveCurrentThemeColorLight(res.data.theme.colorLight));
+                dispatch(saveCurrentThemeColorLight2(res.data.theme.colorLight2));
+                dispatch(saveCurrentThemeColor1(res.data.theme.color1));
+                dispatch(saveCurrentThemeColor2(res.data.theme.color2));
+                dispatch(saveCurrentThemeColor3(res.data.theme.color3));
+                dispatch(saveCurrentThemeColor4(res.data.theme.color4));
                 setThemeName(res.data.theme.themeName);
                 dispatch(saveThemeStatus(res.data.theme.status))
                 if (res.data.theme.status === 'DEFAULT') {

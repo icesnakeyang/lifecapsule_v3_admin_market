@@ -1,4 +1,4 @@
-import {Button, Card, Col, Row} from "antd"
+import {Button, Card, Col, Row, Tag} from "antd"
 import moment from "moment";
 import {useNavigate} from "react-router-dom";
 
@@ -12,6 +12,11 @@ const MottoListRow = (data: any) => {
               }
               }>Edit</Button>
               </div>}>
+            <div>{item.status === 'ACTIVE' ?
+                <Tag color="#108ee9">{item.status}</Tag> :
+                <Tag color="#ccc">{item.status}</Tag>
+            }
+            </div>
             <Row>
                 <Col>{item.content}</Col>
             </Row>
