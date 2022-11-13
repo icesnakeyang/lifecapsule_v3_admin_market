@@ -14,6 +14,7 @@ import AppThemeEdit from "../pages/settings/theme/appTheme/AppThemeEditi";
 import TopicList from "../pages/topic/TopicList";
 import MottoList from "../pages/motto/MottoList";
 import MottoDetail from "../pages/motto/MottoDetail";
+import UserActLogList from "../pages/userActLog/UserActLogList";
 
 const ProtectRouter = ({children}: any) => {
     const token = useSelector((state: any) => state.loginSlice.token);
@@ -108,6 +109,14 @@ const Routers = () => {
                     element={
                         <ProtectRouter>
                             <MottoDetail/>
+                        </ProtectRouter>
+                    }
+                />
+                <Route
+                    path="/main/UserActLogList"
+                    element={
+                        <ProtectRouter>
+                            <UserActLogList/>
                         </ProtectRouter>
                     }
                 />

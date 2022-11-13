@@ -13,7 +13,8 @@
     "themePageWeb": "Web Theme",
     "themePageApp": "App Theme",
     "topicList": "Topic list",
-    "mottoList": "Motto"
+    "mottoList": "Motto",
+    "userActLog": "User Act Log"
   },
   "login": {
     "greeting1": "Welcome Lifecapsule",
@@ -38,6 +39,9 @@
   "motto": {
     "tipSetMottoStopSuccess": "This motto has been stopped already",
     "tipSetMottoActiveSuccess": "This motto has been active already"
+  },
+  "userAct": {
+
   },
   "syserr": {
     "10001": "System or network error",

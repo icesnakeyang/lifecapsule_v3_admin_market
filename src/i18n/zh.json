@@ -13,7 +13,8 @@
     "themePageWeb": "网页端主题",
     "themePageApp": "手机端主题",
     "topicList": "话题",
-    "mottoList": "鸡汤"
+    "mottoList": "鸡汤",
+    "userActLog": "用户行为日志"
   },
   "login": {
     "greeting1": "欢迎登录时空笔记",

@@ -32,6 +32,9 @@ const MainSider = () => {
     if (e.key === "menuMottoList") {
       navigate("/main/MottoList");
     }
+    if (e.key === "menuUserActLog") {
+      navigate("/main/UserActLogList");
+    }
   };
 
   return (
@@ -85,6 +88,11 @@ const MainSider = () => {
           key: "menuMottoList",
           icon: <PartitionOutlined />,
           label: t("nav.mottoList"),
+        },
+        {
+          key: "menuUserActLog",
+          icon: <PartitionOutlined />,
+          label: t("nav.userActLog"),
         },
       ]}
       onClick={(e) => {
