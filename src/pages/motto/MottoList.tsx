@@ -1,6 +1,6 @@
 import {apiListMotto} from "../../api/Api";
 import {useEffect, useState} from "react";
-import {Button, Card} from "antd";
+import {Button, Card, Pagination} from "antd";
 import MottoListRow from "./MottoListRow";
 
 const MottoList = () => {
@@ -11,6 +11,11 @@ const MottoList = () => {
     const [status, setStatus] = useState('ACTIVE')
 
     useEffect(() => {
+        loadAllData()
+    }, [pageIndex])
+
+    useEffect(() => {
+        setPageIndex(1)
         loadAllData()
     }, [status])
 
@@ -36,9 +41,9 @@ const MottoList = () => {
                             <Button type='primary' onClick={() => {
                                 setStatus("ACTIVE")
                             }}>Active</Button>
-                            <Button style={{marginLeft:10}} onClick={() => {
-                                        setStatus('STOP')
-                                    }}>Stop</Button>
+                            <Button style={{marginLeft: 10}} onClick={() => {
+                                setStatus('STOP')
+                            }}>Stop</Button>
                         </div> :
                         <div>
                             <Button onClick={() => {
@@ -56,6 +61,9 @@ const MottoList = () => {
                     <MottoListRow item={item} key={index}/>
                 ))
                 : <div>no data</div>}
+            <Pagination total={totalMotto} onChange={page => {
+                setPageIndex(page)
+            }}/>
         </div>
     )
 }

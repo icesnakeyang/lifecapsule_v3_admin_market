@@ -11,7 +11,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {
     apiListMotto,
-    apiListTop10Notes, apiListTopic,
+    apiListTop10Notes, apiListTopic, apiListUserBindEmail,
     apiListUserLoginLog,
     apiLoadUserLoginStatistic,
     apiLoadUserStatistic,
@@ -29,6 +29,7 @@ import UserLoginStatisticRow from './UserLoginStatisticRow'
 import NoteRow from './NoteRow'
 import TopicRow from "./TopicRow";
 import MottoRow1 from "./MottoRow1";
+import BindEmailRow from "./BindEmailRow";
 
 const {Search} = Input;
 const {RangePicker} = DatePicker;
@@ -59,6 +60,10 @@ const Dashboard = () => {
     const [topicList, setTopicList] = useState([])
     const [totalDUA, setTotalDUA] = useState([])
     const [mottoList, setMottoList] = useState([])
+    const [userBindEmailPageIndex, setUserBindEmailPageIndex] = useState(1)
+    const [userBindEmailPageSize, setUserBindEmailPageSize] = useState(10)
+    const [emailKey, setEmailKey] = useState('')
+    const [userBindEmailList, setUserBindEmailList] = useState([])
 
     useEffect(() => {
         dispatch(saveUserLoginLogPageIndex(1));
@@ -73,6 +78,12 @@ const Dashboard = () => {
         return () => {
         };
     }, [userLoginLogPageIndex, userLoginLogPageSize]);
+
+    useEffect(() => {
+        loadUserBindEmail();
+        return () => {
+        };
+    }, [userBindEmailPageIndex, userBindEmailPageSize]);
 
     useEffect(() => {
         loadUserStatistic();
@@ -134,7 +145,8 @@ const Dashboard = () => {
     const loadTop10Topis = () => {
         let params = {
             pageIndex: 1,
-            pageSize: 10
+            pageSize: 10,
+            status: 'ACTIVE'
         }
         apiListTopic(params).then((res: any) => {
             if (res.code === 0) {
@@ -152,6 +164,19 @@ const Dashboard = () => {
             console.log(res)
             if (res.code === 0) {
                 setMottoList(res.data.mottoList)
+            }
+        })
+    }
+
+    const loadUserBindEmail = () => {
+        let params = {
+            pageIndex: userBindEmailPageIndex,
+            pageSize: userBindEmailPageSize,
+            emailKey
+        }
+        apiListUserBindEmail(params).then((res: any) => {
+            if (res.code === 0) {
+                setUserBindEmailList(res.data.userEmailList)
             }
         })
     }
@@ -347,6 +372,25 @@ const Dashboard = () => {
                                         ))
                                     }
                                 </div> : <div>no motto</div>}
+                        </Card>
+                    </div>
+
+                    {/*用户绑定email*/}
+                    <div style={{marginTop: 10}}>
+                        <Card title='New Bind Email'>
+                            {/*userBindEmailList*/}
+                            <Row>
+                                <Col span={12}>Email</Col>
+                                <Col span={12}>Bind time</Col>
+                            </Row>
+                            {userBindEmailList.length > 0 ?
+                                <div>
+                                    {
+                                        userBindEmailList.map((item: any, index: any) => (
+                                            <BindEmailRow item={item} key={index}/>
+                                        ))
+                                    }
+                                </div> : <div>no bind email</div>}
                         </Card>
                     </div>
                 </div>

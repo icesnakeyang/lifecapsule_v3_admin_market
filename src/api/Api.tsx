@@ -1,9 +1,11 @@
 import {post, get} from "./ApiBase";
 
 // const host = "http://192.168.1.3:8003/lifecapsule3_api";
-const host = "http://localhost:8003/lifecapsule3_api";
+// const host = "http://localhost:8003/lifecapsule3_api";
 // const host = "http://192.168.43.97:8003/lifecapsule3_api";
 // const host = "https://gogorpg.com/lifecapsule3_api";
+// const host = "http://124.217.246.120:8003/lifecapsule3_api";
+const host = "https://tellmeafter.com/lifecapsule3_api";
 
 export const apiAdminLogin = (params: any) => {
     return post(`${host}/admin/login/admin_login`, params);
@@ -72,8 +74,8 @@ export const apiListTop10Notes = () => {
     return get(`${host}/admin/users/listTop10Notes`);
 };
 
-export const apiRemoveTopic = () => {
-    return get(`${host}/admin/topic/removeTopic`);
+export const apiRemoveTopic = (params: any) => {
+    return post(`${host}/admin/topic/removeTopic`, params);
 };
 
 export const apiListTopic = (params: any) => {
@@ -98,4 +100,20 @@ export const apiSetMottoActive = (params: any) => {
 
 export const apiListUserAct = (params: any) => {
     return post(`${host}/admin/userAct/listUserAct`, params);
+};
+
+export const apiGetTopic = (params: any) => {
+    return post(`${host}/admin/topic/getTopic`, params);
+};
+
+export const apiActiveTopic = (params: any) => {
+    return post(`${host}/admin/topic/activeTopic`, params);
+};
+
+export const apiLoadUserData = (params: any) => {
+    return post(`${host}/admin/users/loadUserData`, params);
+};
+
+export const apiListUserBindEmail = (params: any) => {
+    return post(`${host}/admin/users/listUserBindEmail`, params);
 };

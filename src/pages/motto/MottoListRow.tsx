@@ -20,6 +20,9 @@ const MottoListRow = (data: any) => {
             <Row>
                 <Col>{item.content}</Col>
             </Row>
+            <Row>
+                <Col>Views: {item.views}</Col>
+            </Row>
         </Card>
     )
 
